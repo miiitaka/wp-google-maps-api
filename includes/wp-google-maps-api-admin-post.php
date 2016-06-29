@@ -19,8 +19,9 @@ class WP_Google_Maps_Api_Admin_Post {
 	/**
 	 * Constructor Define.
 	 *
-	 * @since 1.0.0
-	 * @param String $text_domain
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 * @param   String $text_domain
 	 */
 	public function __construct ( $text_domain ) {
 		$this->text_domain = $text_domain;
@@ -38,10 +39,10 @@ class WP_Google_Maps_Api_Admin_Post {
 		/** Set Default Parameter for Array */
 		$options = array(
 			"id"                => "",
-			"type"              => "",
-			"template_name"     => "",
-			"template"          => '<img src="##image##">' . PHP_EOL . '<span>##date##</span>' . PHP_EOL . '<span><a href="##link##">##title##</a></span>',
-			"template_no_image" => "",
+			"api_key"           => "",
+			"lat"               => 0,
+			"lng"               => 0,
+			"zoom"              => 8,
 			"save_term"         => 7,
 			"save_item"         => 10,
 			"output_data"       => ""
@@ -76,7 +77,7 @@ class WP_Google_Maps_Api_Admin_Post {
 	 * Setting Page of the Admin Screen.
 	 *
 	 * @since   1.0.0
-	 * @version 1.1.0
+	 * @version 1.0.0
 	 * @param   array  $options
 	 * @param   string $status
 	 */
@@ -101,19 +102,22 @@ class WP_Google_Maps_Api_Admin_Post {
 		echo $html;
 
 		/** Common settings */
-		$html  = '<table class="wp-posted-display-admin-table">';
-		$html .= '<caption>' . esc_html__( 'Common settings', $this->text_domain ) . '</caption>';
-		$html .= '<tr><th><label for="template_name">' . esc_html__( 'Template Name', $this->text_domain ) . ':</label></th><td>';
-		$html .= '<input type="text" name="template_name" id="template_name" class="regular-text" required autofocus value="';
-		$html .= esc_attr( $options['template_name'] ) . '">';
+		$html  = '<table>';
+		$html .= '<tr><th><label for="api_key">' . esc_html__( 'YOUR API KEY', $this->text_domain ) . ':</label></th><td>';
+		$html .= '<input type="text" name="api_key" id="api_key" class="regular-text" required autofocus value="';
+		$html .= esc_attr( $options['api_key'] ) . '">';
 		$html .= '</td></tr>';
-		$html .= '<tr><th><label for="template">' . esc_html__( 'Template', $this->text_domain ) . ':</label></th><td>';
-		$html .= '<textarea name="template" id="template" rows="10" cols="50" class="large-text code">' . $template = str_replace( '\\', '', $options['template'] ) . '</textarea>';
+		$html .= '<tr><th><label for="lat">' . esc_html__( 'Latitude', $this->text_domain ) . ':</label></th><td>';
+		$html .= '<input type="number" name="lat" id="lat" class="small-text" required value="';
+		$html .= esc_attr( $options['lat'] ) . '">';
 		$html .= '</td></tr>';
-		$html .= '<tr><th><label for="template_no_image">' . esc_html__( 'No Image Path', $this->text_domain ) . ':</label></th><td>';
-		$html .= '<input type="text" name="template_no_image" id="template_no_image" class="regular-text" value="';
-		$html .= esc_attr( $options['template_no_image'] ) . '">';
-		$html .= '<p>' . esc_html__( 'It specifies the posts of Alternative Image path that does not set the featured image.', $this->text_domain ) . '</p>';
+		$html .= '<tr><th><label for="lng">' . esc_html__( 'Longitude', $this->text_domain ) . ':</label></th><td>';
+		$html .= '<input type="number" name="lng" id="lng" class="small-text" required value="';
+		$html .= esc_attr( $options['lng'] ) . '">';
+		$html .= '</td></tr>';
+		$html .= '<tr><th><label for="zoom">' . esc_html__( 'Zoom', $this->text_domain ) . ':</label></th><td>';
+		$html .= '<input type="number" name="zoom" id="zoom" class="small-text" required value="';
+		$html .= esc_attr( $options['zoom'] ) . '">';
 		$html .= '</td></tr>';
 		$html .= '</table>';
 		echo $html;
