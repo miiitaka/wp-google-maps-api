@@ -42,10 +42,7 @@ class WP_Google_Maps_Api_Admin_Post {
 			"api_key"           => "",
 			"lat"               => 0,
 			"lng"               => 0,
-			"zoom"              => 8,
-			"save_term"         => 7,
-			"save_item"         => 10,
-			"output_data"       => ""
+			"zoom"              => 8
 		);
 
 		/** Key Set */
