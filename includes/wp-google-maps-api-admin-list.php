@@ -44,10 +44,10 @@ class WP_Google_Maps_Api_Admin_List {
 	 * LIST Page HTML Render.
 	 *
 	 * @since   1.0.0
-	 * @param   Posted_Display_Admin_Db $db
+	 * @param   WP_Google_Maps_Api_Admin_Db $db
 	 * @param   String $mode
 	 */
-	private function page_render ( Posted_Display_Admin_Db $db, $mode = "" ) {
+	private function page_render ( WP_Google_Maps_Api_Admin_Db $db, $mode = "" ) {
 		$post_url = admin_url() . 'admin.php?page=' . $this->text_domain . '/includes/wp-google-maps-api-admin-post.php';
 		$self_url = $_SERVER['PHP_SELF'] . '?' . esc_html( $_SERVER['QUERY_STRING'] );
 
