@@ -38,7 +38,8 @@ class WP_Google_Maps_Api {
 	 */
 	public function __construct () {
 		if ( is_admin() ) {
-			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+			add_action( 'admin_menu',            array( $this, 'admin_menu' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts') );
 		}
 	}
 
@@ -73,7 +74,7 @@ class WP_Google_Maps_Api {
 			array( $this, 'post_page_render' )
 		);
 	}
-	
+
 	/**
 	 * Admin List Page Template Require.
 	 *
@@ -94,5 +95,15 @@ class WP_Google_Maps_Api {
 	public function post_page_render () {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-google-maps-api-admin-post.php' );
 		new WP_Google_Maps_Api_Admin_Post( $this->text_domain );
+	}
+
+	/**
+	 * admin_scripts
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function admin_scripts () {
+		wp_enqueue_script( 'wp-google-maps-api-map-js', plugins_url( 'js/map.js', __FILE__ ), array('jquery'), '1.0.0' );
 	}
 }
