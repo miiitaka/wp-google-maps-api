@@ -100,8 +100,12 @@ class WP_Google_Maps_Api_Admin_Post {
 
 		/** Common settings */
 		$html  = '<table>';
+		$html .= '<tr><th><label for="map_name">' . esc_html__( 'Map Name', $this->text_domain ) . ':</label></th><td>';
+		$html .= '<input type="text" name="map_name" id="map_name" class="regular-text" required autofocus value="';
+		$html .= esc_attr( $options['api_key'] ) . '">';
+		$html .= '</td></tr>';
 		$html .= '<tr><th><label for="api_key">' . esc_html__( 'YOUR API KEY', $this->text_domain ) . ':</label></th><td>';
-		$html .= '<input type="text" name="api_key" id="api_key" class="regular-text" required autofocus value="';
+		$html .= '<input type="text" name="api_key" id="api_key" class="regular-text" required value="';
 		$html .= esc_attr( $options['api_key'] ) . '">';
 		$html .= '</td></tr>';
 		$html .= '<tr><th><label for="lat">' . esc_html__( 'Latitude', $this->text_domain ) . ':</label></th><td>';
@@ -121,7 +125,8 @@ class WP_Google_Maps_Api_Admin_Post {
 
 		submit_button();
 
-		$html  = '</form></div>';
+		$html  = '</form>';
+		$html .= '<input type="button" value="Preview Map" class="button" id="preview-map"></div>';
 		$html .= '<div><div id="wp-google-map-api-map"></div></div>';
 		$html .= '</div>';
 		echo $html;

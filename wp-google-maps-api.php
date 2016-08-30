@@ -58,7 +58,7 @@ class WP_Google_Maps_Api {
 			array( $this, 'list_page_render' )
 		);
 		add_submenu_page(
-			$this->text_domain . '-post',
+			__FILE__,
 			esc_html__( 'All Settings', $this->text_domain ),
 			esc_html__( 'All Settings', $this->text_domain ),
 			'manage_options',
@@ -70,7 +70,7 @@ class WP_Google_Maps_Api {
 			esc_html__( 'Google Maps API', $this->text_domain ),
 			esc_html__( 'Add New',         $this->text_domain ),
 			'manage_options',
-			plugin_dir_path( __FILE__ ) . 'includes/wp-google-maps-api-admin-post.php',
+			$this->text_domain . '-post',
 			array( $this, 'post_page_render' )
 		);
 	}
