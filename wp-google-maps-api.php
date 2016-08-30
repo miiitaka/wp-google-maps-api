@@ -58,7 +58,7 @@ class WP_Google_Maps_Api {
 			array( $this, 'list_page_render' )
 		);
 		add_submenu_page(
-			__FILE__,
+			$this->text_domain . '-post',
 			esc_html__( 'All Settings', $this->text_domain ),
 			esc_html__( 'All Settings', $this->text_domain ),
 			'manage_options',
@@ -104,6 +104,8 @@ class WP_Google_Maps_Api {
 	 * @since   1.0.0
 	 */
 	public function admin_scripts () {
-		wp_enqueue_script( 'wp-google-maps-api-map-js', plugins_url( 'js/map.js', __FILE__ ), array('jquery'), '1.0.0' );
+		if ( isset( $_GET["page"] ) && $_GET["page"] === $this->text_domain . '-post' ) {
+			wp_enqueue_script ( 'wp-google-maps-api-map-js', plugins_url ( 'js/map.js', __FILE__ ), array( 'jquery' ), '1.0.0' );
+		}
 	}
 }
