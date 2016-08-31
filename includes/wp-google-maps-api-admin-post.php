@@ -93,13 +93,14 @@ class WP_Google_Maps_Api_Admin_Post {
 		}
 
 		$html  = '<hr>';
-		$html .= '<div>';
-		$html .= '<form method="post" action="">';
-		$html .= '<input type="hidden" name="google_maps_api_id" value="' . esc_attr( $options['id'] ) . '">';
+		$html .= '<div class="map-api-wrapper">';
 		echo $html;
 
-		/** Common settings */
-		$html  = '<table>';
+		/* Form Content Area */
+		$html  = '<div class="map-api-form">';
+		$html .= '<form method="post" action="">';
+		$html .= '<input type="hidden" name="google_maps_api_id" value="' . esc_attr( $options['id'] ) . '">';
+		$html .= '<table>';
 		$html .= '<tr><th><label for="map_name">' . esc_html__( 'Map Name', $this->text_domain ) . ':</label></th><td>';
 		$html .= '<input type="text" name="map_name" id="map_name" class="regular-text" required autofocus value="';
 		$html .= esc_attr( $options['api_key'] ) . '">';
@@ -126,9 +127,16 @@ class WP_Google_Maps_Api_Admin_Post {
 		submit_button();
 
 		$html  = '</form>';
-		$html .= '<input type="button" value="Preview Map" class="button" id="preview-map"></div>';
-		$html .= '<div><div id="wp-google-map-api-map"></div></div>';
+		$html .= '<input type="button" value="Preview Map" class="button" id="preview-map">';
 		$html .= '</div>';
+
+		/* Map Preview Area */
+		$html .= '<div class="map-api-preview">';
+		$html .= '<div id="wp-google-map-api-map"></div>';
+		$html .= '</div>';
+
+		$html .= '</div>';
+		$html .= '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1AyT4iW49GxlDd4DsZ21TyscGzQLNpnE&callback=initMap" async defer></script>';
 		echo $html;
 	}
 
