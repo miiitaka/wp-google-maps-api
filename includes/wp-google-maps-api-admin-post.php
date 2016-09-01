@@ -104,7 +104,7 @@ class WP_Google_Maps_Api_Admin_Post {
 		$html .= '<table>';
 		$html .= '<tr><th><label for="map_name">' . esc_html__( 'Map Name', $this->text_domain ) . ':</label></th><td>';
 		$html .= '<input type="text" name="map_name" id="map_name" class="regular-text" required autofocus value="';
-		$html .= esc_attr( $options['api_key'] ) . '">';
+		$html .= esc_attr( $options['map_name'] ) . '">';
 		$html .= '</td></tr>';
 		$html .= '<tr><th><label for="lat">' . esc_html__( 'Latitude', $this->text_domain ) . ':</label></th><td>';
 		$html .= '<input type="number" name="lat" id="lat" class="regular-text" required value="';
