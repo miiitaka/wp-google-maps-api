@@ -69,24 +69,33 @@ class WP_Google_Maps_Api {
 		);
 		$list_page = add_submenu_page(
 			__FILE__,
-			esc_html__( 'All Settings', $this->text_domain ),
-			esc_html__( 'All Settings', $this->text_domain ),
+			esc_html__( 'Google Maps API List', $this->text_domain ),
+			esc_html__( 'All Map List',         $this->text_domain ),
 			'manage_options',
 			plugin_basename( __FILE__ ),
 			array( $this, 'list_page_render' )
 		);
 		$post_page = add_submenu_page(
 			__FILE__,
-			esc_html__( 'Google Maps API', $this->text_domain ),
-			esc_html__( 'Add New',         $this->text_domain ),
+			esc_html__( 'Google Maps API Add New', $this->text_domain ),
+			esc_html__( 'Add New Map',             $this->text_domain ),
 			'manage_options',
 			$this->text_domain . '-post',
 			array( $this, 'post_page_render' )
 		);
+		$setting_page = add_submenu_page(
+			__FILE__,
+			esc_html__( 'Google Maps API Settings', $this->text_domain ),
+			esc_html__( 'Settings',                 $this->text_domain ),
+			'manage_options',
+			$this->text_domain . '-setting',
+			array( $this, 'setting_page_render' )
+		);
 
-		add_action( 'admin_print_styles-'  . $post_page, array( $this, 'add_style' ) );
-		add_action( 'admin_print_styles-'  . $list_page, array( $this, 'add_style' ) );
-		add_action( 'admin_print_scripts-' . $post_page, array( $this, 'admin_scripts') );
+		add_action( 'admin_print_styles-'  . $list_page,    array( $this, 'add_style' ) );
+		add_action( 'admin_print_styles-'  . $post_page,    array( $this, 'add_style' ) );
+		add_action( 'admin_print_styles-'  . $setting_page, array( $this, 'add_style' ) );
+		add_action( 'admin_print_scripts-' . $post_page,    array( $this, 'admin_scripts') );
 	}
 
 	/**
@@ -109,6 +118,17 @@ class WP_Google_Maps_Api {
 	public function post_page_render () {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-google-maps-api-admin-post.php' );
 		new WP_Google_Maps_Api_Admin_Post( $this->text_domain );
+	}
+
+	/**
+	 * Admin Setting Page Template Require.
+	 *
+	 * @version 1.0.0
+	 * @since   1.0.0
+	 */
+	public function setting_page_render () {
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/wp-google-maps-api-admin-setting.php' );
+		new WP_Google_Maps_Api_Admin_Setting( $this->text_domain );
 	}
 
 	/**
