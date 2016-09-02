@@ -48,7 +48,7 @@ class WP_Google_Maps_Api_Admin_List {
 	 * @param   String $mode
 	 */
 	private function page_render ( WP_Google_Maps_Api_Admin_Db $db, $mode = "" ) {
-		$post_url = admin_url() . 'admin.php?page=' . $this->text_domain . '/includes/wp-google-maps-api-admin-post.php';
+		$post_url = admin_url() . 'admin.php?page=' . $this->text_domain . '-post';
 		$self_url = $_SERVER['PHP_SELF'] . '?' . esc_html( $_SERVER['QUERY_STRING'] );
 
 		$html  = '';
