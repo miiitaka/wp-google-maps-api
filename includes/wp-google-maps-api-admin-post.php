@@ -97,6 +97,12 @@ class WP_Google_Maps_Api_Admin_Post {
 		$html .= '<div class="map-api-wrapper">';
 		echo $html;
 
+		/* Map Preview Area */
+		$html  = '<div class="map-api-preview">';
+		$html .= '<div id="wp-google-map-api-map"></div>';
+		$html .= '</div>';
+		echo $html;
+
 		/* Form Content Area */
 		$html  = '<div class="map-api-form">';
 		$html .= '<form method="post" action="">';
@@ -126,12 +132,6 @@ class WP_Google_Maps_Api_Admin_Post {
 
 		$html  = '</form>';
 		$html .= '</div>';
-
-		/* Map Preview Area */
-		$html .= '<div class="map-api-preview">';
-		$html .= '<div id="wp-google-map-api-map"></div>';
-		$html .= '</div>';
-
 		$html .= '</div>';
 		$html .= '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1AyT4iW49GxlDd4DsZ21TyscGzQLNpnE&callback=initMap" async defer></script>';
 		$html .= '</div>';

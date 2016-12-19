@@ -1,7 +1,5 @@
 #wp-google-map-api-map {
 	height: 430px;
-	position: relative;
-	width: 100%;
 }
 
 .map-api-wrapper {
@@ -9,12 +7,10 @@
 }
 
 .map-api-form {
-	float: left;
-	width: 470px;
+
 }
 
 .map-api-preview {
-	float: right;
-	padding: 5px 0 0 0;
+	padding: 5px 0;
 	width: 60%;
 }
