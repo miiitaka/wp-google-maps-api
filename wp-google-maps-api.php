@@ -31,6 +31,13 @@ class WP_Google_Maps_Api {
 	private $text_domain = 'wp-google-maps-api';
 
 	/**
+	 * Variable definition.
+	 *
+	 * @since 1.0.0
+	 */
+	private $version = '1.0.0';
+
+	/**
 	 * Constructor Define.
 	 *
 	 * @version 1.0.0
@@ -50,7 +57,7 @@ class WP_Google_Maps_Api {
 	 * @since   1.0.0
 	 */
 	public function admin_init () {
-		wp_register_style( 'wp-google-maps-api-admin-style', plugins_url( 'css/map.css', __FILE__ ), array(), '1.0.0' );
+		wp_register_style( 'wp-google-maps-api-admin-style', plugins_url( 'css/map.css', __FILE__ ), array(), $this->version );
 	}
 
 	/**
@@ -148,6 +155,6 @@ class WP_Google_Maps_Api {
 	 * @since   1.0.0
 	 */
 	public function admin_scripts () {
-		wp_enqueue_script ( 'wp-google-maps-api-map-js', plugins_url ( 'js/map.js', __FILE__ ), array( 'jquery' ), '1.0.0' );
+		wp_enqueue_script ( 'wp-google-maps-api-map-js', plugins_url ( 'js/map.js', __FILE__ ), array( 'jquery' ), $this->version );
 	}
 }
